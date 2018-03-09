@@ -21,16 +21,29 @@ request.get (url, (error, response, body) => {
   if (args[0] != "all") {
   servers = ""
   for (var i = 0; i < 10; i++) {
-
-   var servers = servers + `${m[i].name}\n`
+   var count = 0
+   for (var x = 0; x < m[i].maxPlayers; x++) {
+   if (m[i].players[x]) {
+    count++ 
+   }
+   }
+   var servers = servers + `${m[i].name} | Player Count: ${count}\n`
+   count = 0
   }
    servers.replace("undefined", '')
   reaction.remove(me);
   msg.react('✅')
-  msg.channel.send(servers + "\n`Use !serverlist all to view all servers online!`")} else {
+  msg.channel.send(servers + "\n`Use mh!serverlist all to view all servers online!`")} else {
   servers = ""
+    var count = 0
   for (var i = 0; i < m.length; i++) {
-   var servers = servers + `${m[i].name}\n`
+      for (var x = 0; x < m[i].maxPlayers; x++) {
+   if (m[i].players[x]) {
+    count++ 
+   }
+   }
+   var servers = servers + `${m[i].name} | Player Count: ${count}\n`
+   count = 0
   }
   reaction.remove(me);
   msg.react('✅')
