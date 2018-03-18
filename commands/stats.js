@@ -29,7 +29,7 @@ request.get (url, (error, response, body) => {
     
     for (var i = 0; i < s.length; i++) { 
       let s2 = JSON.parse(body)
-      if (online == "Online") {if (s[i].name == m.name) {for (var j = 0; j < s[i].players.length; j++) {pCount++; console.log(pCount);}; setTimeout(function() {if (online == "Online") {embed.addField(`Player count`,`${pCount}/${s[i].maxPlayers}`,true);embed.addField(`Players`,`${s[i].players.join(", ")}`,true);} msg.channel.send(embed) },50); return;} else {pCount = 0;}} else {msg.channel.send(embed); return;}
+      if (online == "Online") {if (s[i].name == m.name) {for (var j = 0; j < s[i].players.length; j++) {pCount = s[i].players.length; console.log(pCount);}; setTimeout(function() {if (online == "Online") {embed.addField(`Player count`,`${pCount}/${s[i].maxPlayers}`,true);if(s[i].players.length != 0){embed.addField(`Players`,`${s[i].players.join(", ")}`,true);}} msg.channel.send(embed) },50); return;} else {pCount = 0;}} else {msg.channel.send(embed); return;}
     }
       
   })
